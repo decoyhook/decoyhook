@@ -25,6 +25,7 @@ anyone's tokens. Every decoyed pool has to pass the Decoy Check below.
 |---|---|
 | Decoy Check: a decoy buy and sell through any v4 pool, with a verdict | Live on mainnet |
 | Bot Scan: a day of real swaps on a token, routers against bot contracts, and what the hook would have kept | Live on mainnet |
+| Decoy Studio: set the bait for a token and replay its last day of bot swaps under those rules | Live on mainnet (deploy of the hook itself: testnet next) |
 | Terminal: run checks, scans, hook reads and pool lists from a prompt | Live on mainnet |
 | Bait hook: launch guard, gap fee, stay fee, fixed split | Being simulated on real swaps, then testnet |
 | $DECOY: fair launch on Robinhood Chain, weekly holder claims | Not launched. The only contract address will be posted on [x.com/decoyhook](https://x.com/decoyhook) |
@@ -58,6 +59,7 @@ differently cannot be judged from one run.
 | `GET /v1/tokens/:address/pools` | The token's pools against ETH, WETH and USDG, most liquid first |
 | `GET /v1/hooks/:address` | A hook's permissions, proxy status and owner |
 | `GET /v1/scan/:token` | A day of swaps on the token's most liquid pools: router against contract callers, biggest move, and the gap fee estimate |
+| `GET /v1/hot` | The token whose pool saw the most bot-contract swaps in the last half hour |
 | `GET /v1/checks/recent` | The latest checks anyone ran, one per pool, newest first |
 | `GET /v1/health` | Liveness and the latest block |
 
@@ -108,7 +110,7 @@ check from the command line. After changing the probe, run `forge build` and the
 
 ```
 apps/api            Fastify service: pool lookup, the decoy run, the verdict, HTTP routes
-apps/web            The site: home with the live hook toy, the check report, the terminal, the token
+apps/web            The site: home, bot scan, decoy studio, safety check, terminal and token, all in ASCII
 packages/shared     Brand, chain addresses, hook permission decoding, verdict thresholds, report type
 packages/contracts  The probe contract and its tests (Foundry)
 ops/                One Dockerfile per service, and the web server config
