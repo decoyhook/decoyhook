@@ -4,7 +4,7 @@ test = "test"
 script = "script"
 out = "out"
 libs = ["dependencies"]
-solc_version = "0.8.30"
+auto_detect_solc = true
 evm_version = "cancun"
 optimizer = true
 optimizer_runs = 10000
@@ -21,3 +21,5 @@ recursive_deps = false
 
 [dependencies]
 forge-std = "1.10.0"
+v4-core = { version = "4.0.0", git = "https://github.com/Uniswap/v4-core.git", tag = "v4.0.0" }
+solmate = "6.8.0"
