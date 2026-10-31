@@ -24,7 +24,8 @@ anyone's tokens. Every decoyed pool has to pass the Decoy Check below.
 | Part | State |
 |---|---|
 | Decoy Check: a decoy buy and sell through any v4 pool, with a verdict | Live on mainnet |
-| Terminal: run checks, read hooks and list pools from a prompt | Live on mainnet |
+| Bot Scan: a day of real swaps on a token, routers against bot contracts, and what the hook would have kept | Live on mainnet |
+| Terminal: run checks, scans, hook reads and pool lists from a prompt | Live on mainnet |
 | Bait hook: launch guard, gap fee, stay fee, fixed split | Being simulated on real swaps, then testnet |
 | $DECOY: fair launch on Robinhood Chain, weekly holder claims | Not launched. The only contract address will be posted on [x.com/decoyhook](https://x.com/decoyhook) |
 
@@ -56,6 +57,7 @@ differently cannot be judged from one run.
 | `POST /v1/check` with `{ "token": "0x…" }`, `{ "poolId": "0x…" }` or `{ "key": { … } }` | A full check report |
 | `GET /v1/tokens/:address/pools` | The token's pools against ETH, WETH and USDG, most liquid first |
 | `GET /v1/hooks/:address` | A hook's permissions, proxy status and owner |
+| `GET /v1/scan/:token` | A day of swaps on the token's most liquid pools: router against contract callers, biggest move, and the gap fee estimate |
 | `GET /v1/checks/recent` | The latest checks anyone ran, one per pool, newest first |
 | `GET /v1/health` | Liveness and the latest block |
 
