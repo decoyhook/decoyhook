@@ -10,8 +10,8 @@
 
 Bots take the bait. The hook takes the bite, and your holders keep it.
 
-DecoyHook is a hook a token team puts on its v4 pools. Snipers, arbitrage bots and same-block
-flippers that hit a decoyed pool pay a fee sized to the edge they take; people trading normally pay
+DecoyHook is a hook a token team puts on its v4 pools. Snipers, arbitrage bots and liquidity that
+jumps in and out around a trade pay a fee sized to the edge they take; people trading normally pay
 the pool's normal fee. What the hook collects is split between the pool's liquidity providers, the
 token team and holders of $DECOY, by rules fixed when the pool opens.
 
@@ -25,7 +25,7 @@ anyone's tokens. Every decoyed pool has to pass the Decoy Check below.
 |---|---|
 | Decoy Check: a decoy buy and sell through any v4 pool, with a verdict | Live on mainnet |
 | Terminal: run checks, read hooks and list pools from a prompt | Live on mainnet |
-| Bait hook: launch guard, gap fee, flip fee, fixed split | Being simulated on real swaps, then testnet |
+| Bait hook: launch guard, gap fee, stay fee, fixed split | Being simulated on real swaps, then testnet |
 | $DECOY: fair launch on Robinhood Chain, weekly holder claims | Not launched. The only contract address will be posted on [x.com/decoyhook](https://x.com/decoyhook) |
 
 ## The Decoy Check
