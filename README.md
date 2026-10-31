@@ -4,16 +4,36 @@
 
 <h1 align="center">DecoyHook</h1>
 
-<p align="center"><b>Send the decoy first.</b><br>A safety layer for Uniswap v4 hooks on Robinhood Chain.</p>
+<p align="center"><b>Decoy your token.</b><br>A bait hook for Uniswap v4 pools on Robinhood Chain.</p>
 
 ---
 
-A v4 hook can run any code inside a swap. Some show one price and settle at another, some block the
-sell, and some can be changed by their owner. DecoyHook finds out before you trade: it runs a small
-decoy buy and sell through the same pool and hook at the current block, compares what was quoted
-with what actually filled, and reads what the hook is allowed to do.
+Bots take the bait. The hook takes the bite, and your holders keep it.
 
-## How a check works
+DecoyHook is a hook a token team puts on its v4 pools. Snipers, arbitrage bots and same-block
+flippers that hit a decoyed pool pay a fee sized to the edge they take; people trading normally pay
+the pool's normal fee. What the hook collects is split between the pool's liquidity providers, the
+token team and holders of $DECOY, by rules fixed when the pool opens.
+
+A decoyed pool is bait, never a trap. The hook never blocks a sell, never charges a transfer tax,
+never fills at a price other than the quote, has no owner who can change its fees, and never holds
+anyone's tokens. Every decoyed pool has to pass the Decoy Check below.
+
+## Status
+
+| Part | State |
+|---|---|
+| Decoy Check: a decoy buy and sell through any v4 pool, with a verdict | Live on mainnet |
+| Terminal: run checks, read hooks and list pools from a prompt | Live on mainnet |
+| Bait hook: launch guard, gap fee, flip fee, fixed split | Being simulated on real swaps, then testnet |
+| $DECOY: fair launch on Robinhood Chain, weekly holder claims | Not launched. The only contract address will be posted on [x.com/decoyhook](https://x.com/decoyhook) |
+
+## The Decoy Check
+
+A v4 hook can run any code inside a swap. Some show one price and settle at another, some block the
+sell, and some can be changed by their owner. The check finds out by doing what a trader is about to
+do: it runs a small decoy buy and sell through the same pool and hook at the current block, compares
+what was quoted with what actually filled, and reads what the hook is allowed to do.
 
 1. **Read.** The pool manager reads a hook's permissions from the lowest 14 bits of its address. The
    check decodes them, marks the four return-delta permissions that let a hook change what a swap
@@ -29,14 +49,6 @@ placed by a state override, so a check deploys nothing and spends nothing. It ru
 the router's address and once from a fresh address, because a hook that treats callers
 differently cannot be judged from one run.
 
-## Status
-
-| Part | State |
-|---|---|
-| Decoy Check: probe, verdict engine, API, site | Live on mainnet; the public domain follows |
-| Guarded swap: a router that reverts if its own decoy sell fails | In development |
-| Holder Vault: weekly claims by time-weighted balance | Designed |
-
 ## API
 
 | Route | What it returns |
@@ -44,6 +56,7 @@ differently cannot be judged from one run.
 | `POST /v1/check` with `{ "token": "0x…" }`, `{ "poolId": "0x…" }` or `{ "key": { … } }` | A full check report |
 | `GET /v1/tokens/:address/pools` | The token's pools against ETH, WETH and USDG, most liquid first |
 | `GET /v1/hooks/:address` | A hook's permissions, proxy status and owner |
+| `GET /v1/checks/recent` | The latest checks anyone ran, one per pool, newest first |
 | `GET /v1/health` | Liveness and the latest block |
 
 Every input is validated against a strict schema. Checks are rate limited and repeated checks of the
@@ -93,7 +106,7 @@ check from the command line. After changing the probe, run `forge build` and the
 
 ```
 apps/api            Fastify service: pool lookup, the decoy run, the verdict, HTTP routes
-apps/web            The site: home with a live decoy run, the check page, the method
+apps/web            The site: home with the live hook toy, the check report, the terminal, the token
 packages/shared     Brand, chain addresses, hook permission decoding, verdict thresholds, report type
 packages/contracts  The probe contract and its tests (Foundry)
 ops/                One Dockerfile per service, and the web server config
