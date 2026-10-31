@@ -33,7 +33,7 @@ differently cannot be judged from one run.
 
 | Part | State |
 |---|---|
-| Decoy Check: probe, verdict engine, API, site | Built and tested against mainnet; public deployment in progress |
+| Decoy Check: probe, verdict engine, API, site | Live on mainnet; the public domain follows |
 | Guarded swap: a router that reverts if its own decoy sell fails | In development |
 | Holder Vault: weekly claims by time-weighted balance | Designed |
 
