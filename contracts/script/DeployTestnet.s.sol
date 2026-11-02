@@ -18,9 +18,10 @@ contract DeployTestnet is Script {
 
     function run() external {
         require(block.chainid == 46630, "testnet only");
-        address deployer = msg.sender;
+        uint256 signer = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        address deployer = vm.addr(signer);
 
-        vm.startBroadcast();
+        vm.startBroadcast(signer);
         HolderVault vault = new HolderVault(deployer, deployer, 1 hours, 200);
         vm.stopBroadcast();
 
@@ -35,7 +36,7 @@ contract DeployTestnet is Script {
         }
         require(uint160(predicted) & FLAG_MASK == FLAGS, "no salt found");
 
-        vm.startBroadcast();
+        vm.startBroadcast(signer);
         DecoyHook hook = new DecoyHook{salt: salt}(POOL_MANAGER, address(vault));
         vm.stopBroadcast();
         require(address(hook) == predicted, "unexpected hook address");
