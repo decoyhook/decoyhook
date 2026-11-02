@@ -35,3 +35,7 @@ and trust".
 - The gap fee reads its reference from an earlier block. A thin or stale reference makes the fee less
   precise; with no usable reference the pool charges its base fee.
 - The vault's poster and guardian can delay or veto a weekly root. Neither can move funds.
+- The holder check judges an address by whether it has contract code when a root is rebuilt. An
+  address that gains code after it received tokens is judged by what it is at that time.
+- A root is rebuilt from the figures in the transaction that proposed it, so a root proposed through
+  another contract (a multisig) shows as unverified until those figures are published another way.
