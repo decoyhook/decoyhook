@@ -23,11 +23,11 @@ anyone's tokens. Every decoyed pool has to pass the Decoy Check below.
 
 | Part | State |
 |---|---|
-| Decoy Check: a decoy buy and sell through any v4 pool, with a verdict | Live on mainnet |
-| Bot Scan: a day of real swaps on a token, routers against bot contracts, and what the hook would have kept | Live on mainnet |
-| Decoy Studio: set the bait for a token and replay its last day of bot swaps under those rules | Live on mainnet (deploy of the hook itself: testnet next) |
-| Terminal: run checks, scans, hook reads and pool lists from a prompt | Live on mainnet |
-| Bait hook: launch guard, gap fee, stay fee, fixed split | Being simulated on real swaps, then testnet |
+| Decoy Studio: scan a token, set the bait, replay its last day of bot swaps, plan the pool, and prove it safe with the Decoy Check | Live on mainnet data |
+| Terminal: run checks, scans, hook reads and pool lists from a prompt | Live on mainnet data |
+| Bait hook: gap fee, launch guard, fixed split, ownerless | Live on testnet, with a full loop on chain; mainnet after an outside review |
+| Holder vault: a supply stream and a bite stream, weekly roots, one claim | Live on testnet |
+| Stay fee: liquidity that leaves too soon gives up its fees | Next |
 | $DECOY: fair launch on Robinhood Chain, weekly holder claims | Not launched. The only contract address will be posted on [x.com/decoyhook](https://x.com/decoyhook) |
 
 ## The Decoy Check
@@ -110,17 +110,23 @@ check from the command line. After changing the probe, run `forge build` and the
 
 ```
 apps/api            Fastify service: pool lookup, the decoy run, the verdict, HTTP routes
-apps/web            The site: home, bot scan, decoy studio, safety check, terminal and token, all in ASCII
+apps/web            The site: home, decoy studio, claim, terminal, token and docs, all in ASCII
 packages/shared     Brand, chain addresses, hook permission decoding, verdict thresholds, report type
-packages/contracts  The probe contract and its tests (Foundry)
+packages/contracts  The bait hook, the holder vault, the probe, their tests and the testnet scripts (Foundry)
 ops/                One Dockerfile per service, and the web server config
 ```
 
 ## Security
 
 - The probe holds no funds and is never deployed; every check is a read-only call.
+- The hook has no owner and no upgrade path; each pool's rules are fixed when it opens.
 - No keys are needed to run a check, and none are stored in this repository.
 - Report a vulnerability as described in [SECURITY.md](SECURITY.md).
+
+## Contact
+
+admin@decoyhook.com for questions, integrations and security reports. News and the only $DECOY
+contract address are posted first on [x.com/decoyhook](https://x.com/decoyhook).
 
 ## License
 
