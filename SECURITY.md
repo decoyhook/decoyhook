@@ -15,6 +15,9 @@ Nobody from the team will ever ask you for a seed phrase, a private key or a pay
 - The bait hook (`packages/contracts/src/hook`): anything that lets a swap pay more than its quote
   showed, blocks a sell, moves funds it should not, or lets anyone change a pool's rules after it
   opens.
+- The launchpad (`packages/contracts/src/launchpad`): anything that lets the seeded liquidity be
+  removed, the supply grow after launch, a launch open with rules other than the ones it sent, or
+  the collected fees reach anyone but the launch's fee recipient.
 - The holder vault (`packages/contracts/src/vault`): anything that pays out more than a root
   commits, pays the wrong account, or unlocks the supply stream faster than its schedule.
 - The probe contract (`packages/contracts/src/probe`) and the check pipeline in `apps/api`: anything
@@ -22,7 +25,7 @@ Nobody from the team will ever ask you for a seed phrase, a private key or a pay
 - Input handling in the API: validation, rate limits and resource use.
 - The site in `apps/web`.
 
-The hook and the vault run on the testnet only. Their addresses are listed on the site's claim page.
+The hook, the vault and the launchpad run on the testnet only. Their addresses are listed on the site's claim page.
 
 ## Known limits
 
@@ -39,3 +42,10 @@ and trust".
   address that gains code after it received tokens is judged by what it is at that time.
 - A root is rebuilt from the figures in the transaction that proposed it, so a root proposed through
   another contract (a multisig) shows as unverified until those figures are published another way.
+- A direct launch has no other pool to measure a gap against, so its pool charges the launch guard
+  and the base fee only.
+- A launched token's address is predictable from the creator and the salt. Someone who sees the
+  launch before it lands could open a pool for that address first, which makes the launch revert; the
+  creator launches again with a new salt. No funds are at risk.
+- On a buy with a fixed input the hook takes its share from the output, so bites from buys are paid in
+  the token bought, not in ETH.
