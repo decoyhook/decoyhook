@@ -2,8 +2,8 @@
 
 ## Reporting a vulnerability
 
-Email **admin@decoyhook.com** with the subject "security". Once this repository is public, GitHub's
-private vulnerability reporting works too. Do not open a public issue for a security problem.
+Email **admin@decoyhook.com** with the subject "security", or open a private report from the
+repository's Security tab. Do not open a public issue for a security problem.
 
 Include what you found, how to reproduce it and what an attacker could do with it. You will get an
 acknowledgement within three days and a status update within ten.
