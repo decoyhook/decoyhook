@@ -238,7 +238,8 @@ Report a vulnerability as described in [SECURITY.md](SECURITY.md).
 
 [decoyhook.com](https://decoyhook.com) and [x.com/decoyhook](https://x.com/decoyhook) are the only
 official channels. A token, contract address or account presented as DecoyHook's is ours only if it
-is listed there. Questions and integrations: admin@decoyhook.com.
+is listed there. Questions and integrations go to [x.com/decoyhook](https://x.com/decoyhook), and
+security reports follow [SECURITY.md](SECURITY.md).
 
 ## License
 

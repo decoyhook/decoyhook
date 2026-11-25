@@ -2,8 +2,8 @@
 
 ## Reporting a vulnerability
 
-Email **admin@decoyhook.com** with the subject "security", or open a private report from the
-repository's Security tab. Do not open a public issue for a security problem.
+Open a private report from the repository's Security tab, under **Report a vulnerability**. Only
+the maintainers can read it. Do not open a public issue for a security problem.
 
 Include what you found, how to reproduce it and what an attacker could do with it. You will get an
 acknowledgement within three days and a status update within ten.
