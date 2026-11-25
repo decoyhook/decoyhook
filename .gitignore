@@ -1,24 +1,130 @@
+# Dependencies
 node_modules/
-dist/
-build/
-coverage/
+.pnp/
+.pnp.*
+.yarn/
+jspm_packages/
+bower_components/
+
+# Package manager output and logs
 *.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm/
+*.tgz
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+.output/
 *.tsbuildinfo
+*.local
 
-.env
-.env.*
-!.env.example
-.secrets/
+# Caches
+.cache/
+.vite/
+.turbo/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+.swc/
+.rollup.cache/
+*.cache
 
-internal/
+# Tests and coverage
+coverage/
+.nyc_output/
+lcov.info
+*.lcov
+junit.xml
+test-results/
+playwright-report/
+blob-report/
 
+# Contracts (Foundry)
 packages/contracts/out/
 packages/contracts/cache/
 packages/contracts/dependencies/
 packages/contracts/broadcast/
+packages/contracts/lcov.info
+packages/contracts/report/
+packages/contracts/crytic-export/
 
-.DS_Store
-Thumbs.db
+# Static analysis output
+results.sarif
+*.sarif
+slither.json
+aderyn.json
+aderyn.md
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.secrets/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+keystore/
+id_rsa*
+id_ed25519*
+*.mnemonic
+credentials.json
+service-account*.json
+
+# Local workspace
+internal/
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.rej
+deploy-*/
+
+# Hosting and tooling state
+.railway/
+.vercel/
+.netlify/
+.wrangler/
+.dev.vars
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Editors
 .vscode/
 .idea/
+.history/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
 
+# Operating systems
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
