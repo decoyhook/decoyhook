@@ -12,20 +12,21 @@ Nobody from the team will ever ask you for a seed phrase, a private key or a pay
 
 ## In scope
 
-- The bait hook (`packages/contracts/src/hook`): anything that lets a swap pay more than its quote
+- The bait hook (`contracts/src/hook`): anything that lets a swap pay more than its quote
   showed, blocks a sell, moves funds it should not, or lets anyone change a pool's rules after it
   opens.
-- The launchpad (`packages/contracts/src/launchpad`): anything that lets the seeded liquidity be
+- The launchpad (`contracts/src/launchpad`): anything that lets the seeded liquidity be
   removed, the supply grow after launch, a launch open with rules other than the ones it sent, or
   the collected fees reach anyone but the launch's fee recipient.
-- The holder vault (`packages/contracts/src/vault`): anything that pays out more than a root
+- The holder vault (`contracts/src/vault`): anything that pays out more than a root
   commits, pays the wrong account, or unlocks the supply stream faster than its schedule.
-- The probe contract (`packages/contracts/src/probe`) and the check pipeline in `apps/api`: anything
-  that makes a trap read as a pass, or a pass read as a trap.
-- Input handling in the API: validation, rate limits and resource use.
-- The site in `apps/web`.
+- The Decoy Check on decoyhook.com: anything that makes a trap read as a pass, or a pass read as a
+  trap.
+- Input handling in the public API at api.decoyhook.com: validation, rate limits and resource use.
+- The site at decoyhook.com.
 
-The hook, the vault and the launchpad run on the testnet only. Their addresses are listed on the site's claim page.
+The hook, the vault and the launchpad are deployed on the testnet. Their addresses are listed in the
+README.
 
 ## Known limits
 
@@ -33,7 +34,7 @@ These are properties of the design, not vulnerabilities. The site's docs publish
 and trust".
 
 - A check describes one block with a small decoy. A pool can change afterwards, and size-dependent
-  behaviour can be missed.
+  behavior can be missed.
 - A hook could detect a simulation in ways the two caller addresses do not cover.
 - The gap fee reads its reference from an earlier block. A thin or stale reference makes the fee less
   precise; with no usable reference the pool charges its base fee.
