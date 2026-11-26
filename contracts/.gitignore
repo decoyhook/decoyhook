@@ -1,0 +1,7 @@
+out/
+cache/
+dependencies/
+broadcast/
+lcov.info
+report/
+crytic-export/

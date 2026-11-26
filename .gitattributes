@@ -20,7 +20,3 @@
 *.ktx2 binary
 *.pdf binary
 *.zip binary
-
-# Generated files, collapsed in diffs and left out of language stats
-package-lock.json linguist-generated=true
-apps/api/src/chain/probe-artifact.ts linguist-generated=true

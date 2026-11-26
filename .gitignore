@@ -48,15 +48,6 @@ test-results/
 playwright-report/
 blob-report/
 
-# Contracts (Foundry)
-packages/contracts/out/
-packages/contracts/cache/
-packages/contracts/dependencies/
-packages/contracts/broadcast/
-packages/contracts/lcov.info
-packages/contracts/report/
-packages/contracts/crytic-export/
-
 # Static analysis output
 results.sarif
 *.sarif
