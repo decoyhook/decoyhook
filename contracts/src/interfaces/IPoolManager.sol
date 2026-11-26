@@ -17,7 +17,7 @@ struct SwapParams {
     uint160 sqrtPriceLimitX96;
 }
 
-/// @notice The subset of the v4 pool manager the probe calls.
+/// @notice The subset of the v4 pool manager these contracts call.
 interface IPoolManager {
     function unlock(bytes calldata data) external returns (bytes memory);
 
