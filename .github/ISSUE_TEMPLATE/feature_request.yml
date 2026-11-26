@@ -13,10 +13,8 @@ body:
     attributes:
       label: Component
       options:
-        - Site (apps/web)
-        - API (apps/api)
-        - Contracts (packages/contracts)
-        - Shared package (packages/shared)
+        - Contracts (contracts)
+        - Website or API (decoyhook.com)
         - Docs
         - Not sure
     validations:

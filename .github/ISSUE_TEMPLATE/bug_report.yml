@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in the site, the API or the contracts does not work as documented.
+description: Something in the contracts, the website or the API does not work as documented.
 title: "bug: "
 labels: ["bug"]
 body:
@@ -14,10 +14,8 @@ body:
     attributes:
       label: Component
       options:
-        - Site (apps/web)
-        - API (apps/api)
-        - Contracts (packages/contracts)
-        - Shared package (packages/shared)
+        - Contracts (contracts)
+        - Website or API (decoyhook.com)
         - Docs
         - Not sure
     validations:
